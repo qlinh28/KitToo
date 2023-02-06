@@ -23,15 +23,12 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 40),
+              const SizedBox(height: 10),
 
               //logo
-              const Icon(
-                Icons.lock,
-                size: 100,
-              ),
+              Image.asset('lib/images/logo.png', height: 200,),
 
-              const SizedBox(height: 40),
+              const SizedBox(height: 10),
 
               Text(
                 'Welcome back you\'ve been missed!',
@@ -108,11 +105,9 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 15),
 
               const SquareTile(imagePath: 'lib/images/google.png'),
 
-              const SizedBox(height: 15),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
