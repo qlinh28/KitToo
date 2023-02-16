@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:prm_project_kittoo/components/my_button.dart';
 import 'package:prm_project_kittoo/components/my_textfield.dart';
 import 'package:prm_project_kittoo/components/square_tile.dart';
+import 'package:prm_project_kittoo/pages/sign_up_page.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -19,7 +20,7 @@ class LoginPage extends StatelessWidget {
         backgroundColor: Colors.grey[300],
         resizeToAvoidBottomInset: false,
         body: Container(
-          padding: const EdgeInsets.fromLTRB(45, 0, 45, 10),
+          padding: const EdgeInsets.fromLTRB(45, 0, 45, 0),
           child: SafeArea(
               child: Center(
             child: Column(
@@ -63,7 +64,7 @@ class LoginPage extends StatelessWidget {
 
                 //Forgot password
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -75,10 +76,10 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 15),
+                const SizedBox(height: 10),
 
                 MyButton(
-                  text: "Sign n",
+                  text: "Sign in",
                   onTap: signUserIn,
                 ),
 
@@ -130,7 +131,7 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 25),
+                const SizedBox(height: 5),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -139,11 +140,17 @@ class LoginPage extends StatelessWidget {
                       'Not a member?',
                       style: TextStyle(color: Colors.grey[700]),
                     ),
-                    const SizedBox(width: 4),
-                    const Text(
-                      'Register now',
-                      style: TextStyle(
-                          color: Colors.blue, fontWeight: FontWeight.bold),
+                    TextButton(
+                      style: ElevatedButton.styleFrom(
+                          textStyle:
+                              const TextStyle(fontWeight: FontWeight.bold)),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignUpPage()),
+                        );
+                      },
+                      child: const Text('Register now'),
                     ),
                   ],
                 )
