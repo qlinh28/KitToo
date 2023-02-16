@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-//import 'package:prm_project_kittoo/pages/login_page.dart';
-import 'package:prm_project_kittoo/pages/sign_up_page.dart';
+import 'package:prm_project_kittoo/pages/login_page.dart';
+//import 'package:prm_project_kittoo/pages/sign_up_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +28,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignUpPage(),
+      home: LoginPage(),
     );
   }
 }
