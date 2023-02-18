@@ -20,7 +20,7 @@ class SignUpPage extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: Container(
-            padding: const EdgeInsets.fromLTRB(45, 10, 45, 10),
+            padding: const EdgeInsets.fromLTRB(45, 10, 45, 0),
             child: Column(
               children: [
                 Row(
@@ -43,7 +43,7 @@ class SignUpPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      'Let’s create your account',
+                      'Let\'s create your account',
                       style: TextStyle(
                         color: Colors.grey[500],
                         fontSize: 13,
@@ -99,7 +99,7 @@ class SignUpPage extends StatelessWidget {
                   onTap: signUpUser,
                 ),
 
-                const SizedBox(height: 10),
+                const SizedBox(height: 15),
 
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 0),
@@ -128,7 +128,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 10),
+                const SizedBox(height: 15),
 
                 Container(
                   decoration: BoxDecoration(
@@ -147,7 +147,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: 10),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -156,11 +156,14 @@ class SignUpPage extends StatelessWidget {
                       'Already a member?',
                       style: TextStyle(color: Colors.grey[700]),
                     ),
-                    const SizedBox(width: 4),
-                    const Text(
-                      'Login',
-                      style: TextStyle(
-                          color: Colors.blue, fontWeight: FontWeight.bold),
+                    TextButton(
+                      style: ElevatedButton.styleFrom(
+                          textStyle:
+                              const TextStyle(fontWeight: FontWeight.bold)),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Login'),
                     ),
                   ],
                 )
