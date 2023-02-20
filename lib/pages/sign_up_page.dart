@@ -54,9 +54,10 @@ class SignUpPage extends StatelessWidget {
 
                 const SizedBox(height: 10),
 
-                //password texfield
+                //username texfield
                 MyTextField(
                     controller: usernameController,
+                    labelText: 'Username',
                     hintText: 'Enter your username',
                     obscureText: false),
 
@@ -65,6 +66,7 @@ class SignUpPage extends StatelessWidget {
                 //password texfield
                 MyTextField(
                     controller: passwordController,
+                    labelText: 'Password',
                     hintText: 'Enter your password',
                     obscureText: true),
 
@@ -73,6 +75,7 @@ class SignUpPage extends StatelessWidget {
                 //re-password texfield
                 MyTextField(
                     controller: repasswordController,
+                    labelText: 'Re-password',
                     hintText: 'Enter your re-password',
                     obscureText: true),
 
@@ -81,6 +84,7 @@ class SignUpPage extends StatelessWidget {
                 //fullname textfield
                 MyTextField(
                     controller: fullnameController,
+                    labelText: 'Fullname',
                     hintText: 'Enter your full name',
                     obscureText: false),
 
@@ -89,6 +93,7 @@ class SignUpPage extends StatelessWidget {
                 //email textfield
                 MyTextField(
                     controller: emailController,
+                    labelText: 'Email',
                     hintText: 'Enter your email address',
                     obscureText: false),
 

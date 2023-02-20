@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:prm_project_kittoo/components/search_form.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,44 +9,77 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    _tabController = TabController(length: 4, vsync: this, initialIndex: 0);
+    _tabController.addListener((_handleTabSelection));
+    super.initState();
+  }
+
+  _handleTabSelection() {
+    if (_tabController.indexIsChanging) {
+      setState(() {});
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.fromLTRB(45, 0, 45, 0),
-        child: SafeArea(
+      body: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(45, 0, 45, 0),
           child: Column(
-            children: const [
-              Text('Discover'),
-              Text('hellodsadsadsadsad')
-              // Row(
-              //   children: [
-              //     Container(
-              //       height: double.infinity,
-              //       decoration: BoxDecoration(
-              //         color: Colors.grey.shade300,
-              //         borderRadius: BorderRadius.circular(10),
-              //       ),
-              //       child: Row(
-              //         crossAxisAlignment: CrossAxisAlignment.center,
-              //         children: const [
-              //           Icon(Icons.search),
-              //           Text(
-              //             'Search anything',
-              //           ),
-              //         ],
-              //       ),
-              //     ),
-              //     ElevatedButton(
-              //         style: ElevatedButton.styleFrom(
-              //           backgroundColor: Colors.black, // background
-              //           foregroundColor: Colors.white, // foreground
-              //         ),
-              //         onPressed: () {},
-              //         child: const Icon(Icons.filter_list)),
-              //   ],
-              // ),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Discover',
+                style: TextStyle(fontSize: 30),
+              ),
+              const SearchForm(),
+              TabBar(
+                  controller: _tabController,
+                  labelColor: Colors.black,
+                  labelStyle: const TextStyle(fontSize: 15),
+                  labelPadding: const EdgeInsets.symmetric(horizontal: 0),
+                  indicator: const UnderlineTabIndicator(
+                      borderSide: BorderSide(
+                    width: 3,
+                    color: Colors.black,
+                  ), insets: EdgeInsets.symmetric(horizontal: 16)),
+                  tabs: const  [
+                    Tab(
+                      text: "All",
+                    ),
+                    Tab(
+                      text: "Men",
+                    ),
+                    Tab(
+                      text: "Women",
+                    ),
+                    Tab(
+                      text: "Kid",
+                    ),
+                  ]),
+              const SizedBox(height: 10),
+              Center(
+                  child: [
+                Container(
+                  color: Colors.black,
+                ),
+                Container(
+                  color: Colors.red,
+                ),
+                Container(
+                  color: Colors.red,
+                ),
+                Container(
+                  color: Colors.red,
+                ),
+              ][_tabController.index])
             ],
           ),
         ),
