@@ -2,9 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:prm_project_kittoo/pages/home_page.dart';
-import 'package:prm_project_kittoo/pages/login_page.dart';
-
-
 
 void main() {
   runApp(const MyApp());

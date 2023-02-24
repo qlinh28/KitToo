@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:prm_project_kittoo/components/my_button.dart';
-import 'package:prm_project_kittoo/components/my_textfield.dart';
-import 'package:prm_project_kittoo/components/square_tile.dart';
+import 'package:prm_project_kittoo/components/login_signup/my_button.dart';
+import 'package:prm_project_kittoo/components/login_signup/my_textfield.dart';
+import 'package:prm_project_kittoo/components/login_signup/square_tile.dart';
 import 'package:prm_project_kittoo/pages/sign_up_page.dart';
 
 class LoginPage extends StatelessWidget {
