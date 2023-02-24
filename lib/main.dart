@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:prm_project_kittoo/pages/home_page.dart';
+import 'package:prm_project_kittoo/components/screens.dart';
 
 void main() {
   runApp(const MyApp());
@@ -72,9 +72,9 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: Screens(),
     );
   }
 }

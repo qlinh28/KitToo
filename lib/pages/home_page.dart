@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:prm_project_kittoo/components/footer.dart';
 import 'package:prm_project_kittoo/components/home/item_card.dart';
 import 'package:prm_project_kittoo/components/home/search_form.dart';
 
@@ -36,7 +35,6 @@ class _HomePageState extends State<HomePage>
           child: ListView(
             children: [
               const SizedBox(height: 15),
-
               const Text(
                 'Discover',
                 style: TextStyle(
@@ -44,11 +42,8 @@ class _HomePageState extends State<HomePage>
                   fontWeight: FontWeight.bold,
                 ),
               ),
-
               const SizedBox(height: 5),
-
               const SearchForm(),
-
               TabBar(
                   controller: _tabController,
                   isScrollable: true,
@@ -79,7 +74,6 @@ class _HomePageState extends State<HomePage>
           ),
         ),
       ),
-      bottomNavigationBar: const Footer(),
     );
   }
 }

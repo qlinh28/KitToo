@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prm_project_kittoo/models/products.dart';
+import 'package:prm_project_kittoo/pages/product_details.dart';
 
 class ItemCard extends StatelessWidget {
   ItemCard({super.key});
@@ -9,14 +10,16 @@ class ItemCard extends StatelessWidget {
       id: 1,
       name: "Office Code",
       price: 234,
-      description: "cap di hoc",
+      description:
+          "cap di hoc cap di hoc cap di hoc cap di hoc cap di hoc cap di hoc cap di hoc cap di hoc cap di hoc",
       image: "lib/images/bag_1.png",
     ),
     Product(
       id: 2,
       name: "Belt Bag",
       price: 235,
-      description: "cap day",
+      description:
+          "cap day cap day cap day cap day cap day cap day cap day cap day cap day cap day ",
       image: "lib/images/bag_2.png",
     ),
     Product(
@@ -67,7 +70,13 @@ class ItemCard extends StatelessWidget {
             ),
             child: Column(children: [
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              DetailsScreen(product: products[i])));
+                },
                 child: Container(
                   margin: const EdgeInsets.all(10),
                   child: Image.asset(
@@ -87,7 +96,7 @@ class ItemCard extends StatelessWidget {
                     children: [
                       Text(
                         products[i].name,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                         ),
