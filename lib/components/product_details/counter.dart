@@ -8,55 +8,72 @@ class CartCounter extends StatefulWidget {
 }
 
 class _CartCounterState extends State<CartCounter> {
-  int numOfItems = 1;
+  int _counter = 1;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  void _decrementCounter() {
+    if (_counter >= 1) {
+      setState(() {
+        _counter--;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: <Widget>[
-        buildOutlineButton(
-          icon: Icons.remove,
-          press: () {
-            if (numOfItems > 1) {
-              setState(() {
-                numOfItems--;
-              });
-            }
-          },
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 2),
-          child: Text(
-            // if our item is less  then 10 then  it shows 01 02 like that
-            numOfItems.toString().padLeft(2, "0"),
-            style: Theme.of(context).textTheme.headline6,
+      children: [
+        Container(
+          padding: EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+          ),
+          child: CircleAvatar(
+            radius: 15.0,
+            backgroundColor: Colors.orange.shade100,
+            child: IconButton(
+              icon: Icon(
+                Icons.remove,
+                color: Colors.white,
+                size: 15,
+              ),
+              onPressed: _decrementCounter,
+            ),
           ),
         ),
-        buildOutlineButton(
-            icon: Icons.add,
-            press: () {
-              setState(() {
-                numOfItems++;
-              });
-            }),
+        const SizedBox(width: 10),
+        Text(
+          '$_counter',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(width: 10),
+        Container(
+          padding: EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+          ),
+          child: CircleAvatar(
+            radius: 15.0,
+            backgroundColor: Colors.orange.shade100,
+            child: IconButton(
+              icon: Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 15,
+              ),
+              onPressed: _incrementCounter,
+            ),
+          ),
+        ),
       ],
-    );
-  }
-
-  SizedBox buildOutlineButton(
-      {required IconData icon, required Function press}) {
-    return SizedBox(
-      width: 40,
-      height: 32,
-      child: OutlinedButton(
-        style: OutlinedButton.styleFrom(
-          padding: EdgeInsets.zero,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(13),
-          ),
-        ),
-        onPressed: press(),
-        child: Icon(icon),
-      ),
     );
   }
 }

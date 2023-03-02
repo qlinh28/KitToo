@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:prm_project_kittoo/pages/cart_page.dart';
+import 'package:prm_project_kittoo/pages/history_page.dart';
 import 'package:prm_project_kittoo/pages/home_page.dart';
+import 'package:prm_project_kittoo/pages/settings_page.dart';
 
 class Screens extends StatefulWidget {
   const Screens({super.key});
@@ -15,9 +17,9 @@ class _ScreensState extends State<Screens> {
 
   static final List<Widget> _screenOptions = <Widget>[
     const HomePage(),
+    HistoryScreen(),
     const CartScreen(),
-    const CartScreen(),
-    const HomePage(),
+    SettingsScreen(),
   ];
 
   @override

@@ -38,18 +38,20 @@ class DetailsScreen extends StatelessWidget {
                         Text(
                           product.name,
                           style: const TextStyle(
-                            fontSize: 18,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(height: 5),
+                        const SizedBox(height: 10),
                         Text(
                           "\$${product.price}",
-                          style: const TextStyle(
-                            fontSize: 15,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.orange.shade400,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 10),
                         Padding(
                             padding: const EdgeInsets.only(left: 25, right: 20),
                             child: Text(
@@ -63,7 +65,25 @@ class DetailsScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  CartCounter(),
+                  const SizedBox(height: 10),
+                  Container(
+                    padding: EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Quantity",
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            )),
+                        CartCounter(),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
@@ -85,7 +105,7 @@ class DetailsScreen extends StatelessWidget {
                   InkWell(
                     onTap: () {},
                     child: Container(
-                      width: MediaQuery.of(context).size.width / 1.5,
+                      width: MediaQuery.of(context).size.width / 2.3,
                       height: MediaQuery.of(context).size.height / 15,
                       decoration: BoxDecoration(
                         color: Colors.black,
@@ -106,18 +126,22 @@ class DetailsScreen extends StatelessWidget {
                   InkWell(
                     onTap: () {},
                     child: Container(
-                      width: MediaQuery.of(context).size.width / 5.5,
+                      width: MediaQuery.of(context).size.width / 2.3,
                       height: MediaQuery.of(context).size.height / 15,
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: Colors.orange.shade400,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: const Center(
-                          child: Icon(
-                        Icons.favorite_outline,
-                        color: Colors.white,
-                        size: 30,
-                      )),
+                        child: Text(
+                          "Buy now",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1),
+                        ),
+                      ),
                     ),
                   ),
                 ],
