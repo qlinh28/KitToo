@@ -1,16 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:prm_project_kittoo/components/product_details/counter.dart';
 import 'package:prm_project_kittoo/models/cart.dart';
 import 'package:prm_project_kittoo/models/products.dart';
 
-class ProductDetailScreen extends StatelessWidget {
+class ProductDetailScreen extends StatefulWidget {
   final Product product;
   const ProductDetailScreen({super.key, required this.product});
 
   @override
+  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
+}
+
+class _ProductDetailScreenState extends State<ProductDetailScreen> {
+  int _quantity = 1;
+
+    void _incrementQuantity() {
+      setState(() {
+        _quantity++;
+      });
+    }
+
+    void _decrementQuantity() {
+      if (_quantity > 1) {
+        setState(() {
+          _quantity--;
+        });
+      }
+    }
+  @override
   Widget build(BuildContext context) {
-    int quantity = 1;
     final cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
         body: SingleChildScrollView(
@@ -28,7 +46,7 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                   Center(
                     child: Image.asset(
-                      product.image,
+                      widget.product.image,
                       width: 250,
                       height: 300,
                       fit: BoxFit.contain,
@@ -40,7 +58,7 @@ class ProductDetailScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          product.name,
+                          widget.product.name,
                           style: const TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
@@ -48,7 +66,7 @@ class ProductDetailScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          "\$${product.price}",
+                          "\$${widget.product.price}",
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.orange.shade400,
@@ -59,7 +77,7 @@ class ProductDetailScreen extends StatelessWidget {
                         Padding(
                             padding: const EdgeInsets.only(left: 25, right: 20),
                             child: Text(
-                              product.description,
+                              widget.product.description,
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.grey.shade600,
@@ -71,7 +89,7 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Container(
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     decoration: BoxDecoration(
                       color: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(20),
@@ -79,12 +97,60 @@ class ProductDetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Quantity",
+                        const Text("Quantity",
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             )),
-                        CartCounter(),
+                        Row( 
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                              ),
+                              child: CircleAvatar(
+                                radius: 15.0,
+                                backgroundColor: Colors.orange.shade100,
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.remove,
+                                    color: Colors.white,
+                                    size: 15,
+                                  ),
+                                  onPressed: _decrementQuantity,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Text(
+                              '$_quantity',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                              ),
+                              child: CircleAvatar(
+                                radius: 15.0,
+                                backgroundColor: Colors.orange.shade100,
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                    size: 15,
+                                  ),
+                                  onPressed: _incrementQuantity,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   )
@@ -110,14 +176,14 @@ class ProductDetailScreen extends StatelessWidget {
                     onTap: () {
                       cartProvider.addToCart(
                         CartItem(
-                          product: product,
-                          quantity: quantity,
+                          product: widget.product,
+                          quantity: _quantity,
                         ),
                       );
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text('${product.name} added to cart'),
-                          duration: Duration(seconds: 1),
+                          content: Text('${widget.product.name} added to cart'),
+                          duration: const Duration(seconds: 1),
                         ),
                       );
                     },

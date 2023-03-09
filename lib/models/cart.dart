@@ -5,7 +5,7 @@ class CartItem {
   Product product;
   int quantity;
 
-  CartItem({required this.product, this.quantity = 1});
+  CartItem({required this.product,required this.quantity});
 }
 
 class CartProvider extends ChangeNotifier {
@@ -27,7 +27,7 @@ class CartProvider extends ChangeNotifier {
     final index = _items.indexWhere((i) => i.product.id == item.product.id);
     if (index >= 0) {
       // item is already in the cart, increase its quantity
-      _items[index].quantity++;
+      _items[index].quantity += item.quantity;
     } else {
       // add new item to the cart
       _items.add(item);

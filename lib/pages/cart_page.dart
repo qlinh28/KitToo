@@ -15,7 +15,7 @@ class _CartScreenState extends State<CartScreen> {
     final cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 40, left: 15, right: 15),
+        padding: const EdgeInsets.only(top: 30, left: 15, right: 15),
         child: Column(
           children: [
             Row(
@@ -34,18 +34,26 @@ class _CartScreenState extends State<CartScreen> {
                   onPressed: () {
                     cartProvider.clearCart();
                   },
-                  child: Text('Clear Cart'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange.shade400,
+                    foregroundColor: Colors.white,
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  child: const Text('Clear Cart'),
                 ),
               ],
             ),
             cartProvider.itemCount == 0
-                ? Center(child: Text('Cart is empty.'))
+                ? const Center(child: Text('Cart is empty.'))
                 : Column(
                     children: [
                       Column(
                         children: [
                           SizedBox(
-                            height: 390,
+                            height: 400,
                             child: ListView.builder(
                                 scrollDirection: Axis.vertical,
                                 shrinkWrap: true,
@@ -92,7 +100,9 @@ class _CartScreenState extends State<CartScreen> {
                                             padding: const EdgeInsets.only(
                                                 left: 15, top: 15, bottom: 15),
                                             child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                               children: [
                                                 Column(
                                                   mainAxisAlignment:
@@ -144,7 +154,7 @@ class _CartScreenState extends State<CartScreen> {
                                                     cartProvider
                                                         .removeFromCart(item);
                                                   },
-                                                  icon: Icon(Icons
+                                                  icon: const Icon(Icons
                                                       .remove_shopping_cart),
                                                 ),
                                               ],
@@ -213,4 +223,3 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 }
-
