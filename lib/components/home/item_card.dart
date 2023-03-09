@@ -75,7 +75,7 @@ class ItemCard extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              DetailsScreen(product: products[i])));
+                              ProductDetailScreen(product: products[i])));
                 },
                 child: Container(
                   margin: const EdgeInsets.all(10),

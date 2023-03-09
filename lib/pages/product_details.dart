@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:prm_project_kittoo/components/product_details/counter.dart';
+import 'package:prm_project_kittoo/models/cart.dart';
 import 'package:prm_project_kittoo/models/products.dart';
 
-class DetailsScreen extends StatelessWidget {
+class ProductDetailScreen extends StatelessWidget {
   final Product product;
-  const DetailsScreen({super.key, required this.product});
+  const ProductDetailScreen({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
+    int quantity = 1;
+    final cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
         body: SingleChildScrollView(
           child: SafeArea(
@@ -103,7 +107,20 @@ class DetailsScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      cartProvider.addToCart(
+                        CartItem(
+                          product: product,
+                          quantity: quantity,
+                        ),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('${product.name} added to cart'),
+                          duration: Duration(seconds: 1),
+                        ),
+                      );
+                    },
                     child: Container(
                       width: MediaQuery.of(context).size.width / 2.3,
                       height: MediaQuery.of(context).size.height / 15,

@@ -18,7 +18,7 @@ class _ScreensState extends State<Screens> {
   static final List<Widget> _screenOptions = <Widget>[
     const HomePage(),
     HistoryScreen(),
-    const CartScreen(),
+    CartScreen(),
     SettingsScreen(),
   ];
 
